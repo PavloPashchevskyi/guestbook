@@ -1,0 +1,14 @@
+{#<form id="form_user_captcha" action="/gb/usercaptcha/go" method="post" enctype="multipart/form-data">#}
+<div id="div_user_captcha">
+    <!-- Форма будет отправлять введенные пользователем данные скрипту go.php методом POST -->
+    <img src='/gb/usercaptcha/captcha' id='capcha-image'>
+    <!-- Сама капча -->
+    <a href="javascript:void(0);" onclick="document.getElementById('capcha-image').src='/gb/usercaptcha/captcha?rid=' + Math.random();">Обновить капчу</a>
+    <!-- Ссылка на обновление капчи. Запрашиваем у captcha.php случайное изображение.  -->
+    <span>Введите капчу:</span>
+    <input type="text" name="code">
+    <input type="submit" name="go" value="Продолжить">
+    <!-- Отправляем данные скрипту-обработчику go.php -->
+    <div id="div_captcha_submit_result"></div>
+</div>
+{#</form>#}

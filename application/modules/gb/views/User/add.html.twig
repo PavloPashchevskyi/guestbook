@@ -1,0 +1,29 @@
+{% extends "common/base.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/application/modules/gb/views/includes/js/usercaptcha.js">
+    </script>
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+    <div id="form_user_create_wrapper" class="wrapper">
+        <form action="/gb/user/create" method="post">
+            <label for="text_user_name">User name:</label>
+            <input type="text" name="username" id="text_user_name" required="required"/><br/>
+            <label for="select_category">Category:</label>
+            <select id="select_category" name="category" required="required">
+                {% for category in categories %}
+                    <option value="{{ category.cat_id }}">{{ category.cat_name}}</option>
+                {% endfor %}
+            </select><br/>
+            <label for="email_email">E-mail:</label>
+            <input type="email" name="email" id="email_email" required="required"/><br/>
+            <label for="url_homepage">Homepage:</label>
+            <input type="url" name="homepage" id="url_homepage"/><br/>
+            {% include 'User/captcha.html.twig' %}
+            <label for="textarea_text">Text of message:</label>
+            <textarea name="text" id="textarea_text" required="required"></textarea><br/>
+            <input type="submit" value="Send"/><br/>
+        </form>
+    </div>
+{% endblock %}
